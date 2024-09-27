@@ -1,0 +1,286 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+  
+  .app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Header styles */
+  .header {
+    display: flex;
+    align-items: center;
+    background-color: #1e3a5f;
+    color: white;
+    padding: 10px 20px;
+  }
+  
+  .menu-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .admin-title {
+    margin-left: 20px;
+    font-size: 20px;
+  }
+  
+  .logo {
+    margin-left: auto;
+    margin-right: 20px;
+  }
+  
+  .user-profile {
+    display: flex;
+    align-items: center;
+  }
+  
+  .user-profile span {
+    margin-left: 10px;
+  }
+  
+  /* Main content styles */
+  .main-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: white;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logs-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .logs-title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .log-issue-button {
+    background-color: #17a2b8;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .search-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-input {
+    
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+  
+  .search-icon {
+    margin-right: 10px;
+  }
+  
+  .filter-sort {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+  }
+  
+  .filter-button,
+  .sort-button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 20px;
+  }
+  
+  .logs-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .logs-table th,
+  .logs-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .logs-table th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+  }
+  
+  .status {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+  }
+  
+  .status.pending {
+    background-color: #ffc107;
+    color: #000;
+  }
+  
+  .status.ongoing {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .status.resolved {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  .view-button {
+    background-color: #17a2b8;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: 0 5px;
+    padding: 5px 10px;
+  }
+  
+  .pagination button.active {
+    background-color: #17a2b8;
+    color: white;
+    border-radius: 4px;
+  }
+
+  /* ... (previous styles remain unchanged) ... */
+
+/* Back button styles */
+.back-button {
+    margin-bottom: 20px;
+    
+  }
+  
+  .icon-button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #f5f5f5;
+    background-color: #f80606;
+  }
+  
+  .icon-button svg {
+    margin-right: 5px;
+  }
+  
+  /* Modal styles */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 300px;
+  }
+  
+  .modal h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-group select {
+    width: 100%;
+    padding: 5px;
+  }
+  
+  .modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+  }
+  
+  .apply-button,
+  .cancel-button {
+    padding: 5px 10px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .apply-button {
+    background-color: #17a2b8;
+    color: white;
+  }
+  
+  .cancel-button {
+    background-color: #6c757d;
+    color: white;
+  }
+  
+  .sort-options {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sort-options button {
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .sort-options button:hover {
+    background-color: #e9ecef;
+  }

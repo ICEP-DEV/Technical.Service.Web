@@ -1,16 +1,11 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './screens/Header'
+import MainContent from './screens/MainContent'
 
-import Login from './screens/Login';
-
-import './App.css';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-function App() {
+export default function App() {
   return (
-    <Router>
-      <Routes>
-      <Route exact path='/' element={<Login />} />
-      </Routes>
-    </Router>
-  );
-}
-export default App;
+    <div className="app">
+      <Header />
+      <MainContent />
+    </div>
+  )
+};
