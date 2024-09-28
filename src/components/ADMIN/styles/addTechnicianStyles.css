@@ -1,0 +1,71 @@
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.container {
+    background-color: #f5f5f5;
+    padding: 40px;
+    border-radius: 8px;
+    width: 700px;
+    margin: 0 auto;
+}
+
+.btn-cancel {
+    background-color: #b81c1c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    float: left;
+}
+
+.btn-success {
+    background-color: #29a145de;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    float: right;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.password-section {
+    display: flex;
+    align-items: center;
+}
+
+.password-section input {
+    margin-right: 10px;
+}
+
+.btn-generate {
+    background-color: #3df847;
+    color: white;
+    border: none;
+}
+
+.availability-section {
+    display: flex;
+    gap: 10px;
+}
+
+/* Icon styling */
+.icon {
+    width: 70px;
+    height: 70px;
+    margin-right: 5px;
+}
+
+/* Header title styling */
+.header-title {
+    display: flex;
+    align-items: center;
+    font-family: 'Istok Web', sans-serif;
+    font-size: 28px;
+    color: #333333;
+    margin: 0;
+    font-weight: 700;
+}
