@@ -9,13 +9,14 @@ function AdminChat() {
     const technicianName = "Samuel Mahlangu"; 
     const [text, setText] = useState('');
     const [chatLog, setChatLog] = useState([
-        { text: "Please avail yourself tomorrow at 10am. I will come and have a look at your PC.", sender: "Technician" }
+        { text: "Please avail yourself tomorrow at 10am. I will come and have a look at your PC.", sender: "Technician", time: "10:00" }
     ]);
+    const fileInputRef = useRef(null);
 
-    const fileInputRef = useRef(null); 
     const handleSendText = () => {
         if (text.trim() !== '') {
-            setChatLog([...chatLog, { text: text, sender: "You" }]);
+            const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            setChatLog([...chatLog, { text: text, sender: "You", type: "text", time: currentTime }]);
             setText('');
         }
     };
@@ -27,27 +28,35 @@ function AdminChat() {
     const handleFileChange = (event) => {
         const file = event.target.files[0];
         if (file) {
-            
+            const fileURL = URL.createObjectURL(file);
+            const fileType = file.type.startsWith("image/") ? "image" : "file";
+            const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
             toast.success(`Attached: ${file.name}`);
             
-            setChatLog([...chatLog, { text: `Attached: ${file.name}`, sender: "You" }]);
+            setChatLog([...chatLog, { text: fileURL, sender: "You", type: fileType, fileName: file.name, time: currentTime }]);
         }
     };
 
     return (
-        <div>
+        <div className="main-container">
             <div className="chat-container">
-                <h4><img src={ProfileIcon} alt="Profile picture" height={45}/> {technicianName}</h4>
+                <h4 className="technician-name"><img src={ProfileIcon} alt="Profile" height={45}/> {technicianName}</h4>
                 <div className="chat-box">
                     <div className="texts">
                         {chatLog.map((msg, index) => (
-                            <p key={index} className={msg.sender === "You" ? "user-message" : "tech-message"}>
-                                {msg.text}
-                            </p>
+                            <div key={index} className={msg.sender === "You" ? "user-message" : "tech-message"}>
+                                {msg.type === "image" ? (
+                                    <img src={msg.text} alt={msg.fileName} style={{ maxWidth: '100%', borderRadius: '10px' }} />
+                                ) : (
+                                    <p>{msg.text}</p>
+                                )}
+                                <span className="time-stamp">{msg.time}</span>
+                            </div>
                         ))}
                     </div>
                 </div>
-                <div className="input-field">
+                <div className="message-field">
                     <input 
                         type="text" 
                         value={text} 
@@ -59,15 +68,17 @@ function AdminChat() {
                         alt="Attach" 
                         onClick={handleAttachImage} 
                         height={45} 
-                        className="attach-icon" 
+                        className="attachment-icon" 
                     />
-                    <button onClick={handleSendText}>Send</button>
                     <input 
                         type="file" 
                         ref={fileInputRef} 
                         onChange={handleFileChange} 
                         style={{ display: 'none' }} 
                     />
+
+                    <button className="send-button" onClick={handleSendText}>Send</button>
+                    
                 </div>
             </div>
             <ToastContainer />
