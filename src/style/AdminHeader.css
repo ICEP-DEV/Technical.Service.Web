@@ -1,0 +1,126 @@
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 10px 20px;
+    background-color: #0C3A3A;
+    color: white;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex: 1;
+}
+
+.logo {
+    height: 65px; 
+    margin-right: 10px;
+}
+
+.header-right {
+    position: relative; 
+    overflow: visible;
+}
+
+button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.7;
+}
+
+.profile-button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Viewing Box Styles */
+/* Existing CSS... */
+
+/* Viewing Box Styles */
+.viewing-box {
+    position: absolute;
+    top: 50px; /* Adjust this value as needed to position below the profile button */
+    right: 0;
+    background-color: #ffffff; /* White background for the viewing box */
+    color: #0C3A3A; /* Darker text color for readability */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    padding: 20px;
+    width: 220px; /* Width of the viewing box */
+    text-align: left;
+    z-index: 1;
+    text-align: center;
+    display: flex; /* Use flexbox for better layout */
+    flex-direction: column; /* Stack items vertically */
+}
+
+/* Header inside Viewing Box */
+.header {
+    color: #0C3A3A;
+}
+
+/* Profile Name Style */
+.profile-name {
+    font-size: 18px; /* Slightly larger font size */
+    font-weight: bold;
+    margin: 0; /* Reset margin */
+}
+
+/* Edit Button Style */
+.edit-button {
+    background: none; /* No background */
+    border: none; /* No border */
+    cursor: pointer; /* Change cursor on hover */
+    color: #0C3A3A; /* Color matching the theme */
+}
+
+.edit-button:hover {
+    opacity: 0.7; /* Change opacity on hover */
+}
+
+/* Subtext Style */
+.sub-text {
+    font-size: 14px;
+    color: #0C3A3A; /* Color for subtext */
+    font-weight: normal;
+    margin: 0; /* Reset margin */
+    padding: 2px 0; /* Spacing for subtext */
+}
+
+/* Sign Out Button Style */
+.signout-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: none;
+    background-color: transparent; /* Transparent background for sign-out button */
+    color: #0C3A3A;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px; /* Space above the sign-out button */
+}
+
+.signout-button:hover {
+    background-color: #f0f0f0; /* Light gray on hover */
+}
+
+.signout-icon {
+    margin-right: 5px; /* Spacing for icon */
+    color: #0C3A3A; /* Icon color */
+}
