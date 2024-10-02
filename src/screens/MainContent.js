@@ -2,20 +2,22 @@ import React, { useState } from 'react'
 import { Search, Filter, List, ArrowLeft,Clock } from 'lucide-react'
 import FilterModal from './FilterModal'
 import SortModal from './SortModal'
-import  './styles.css'
+import DetailView from './DetailView'
+import './styles.css'
 
 const initialLogs = [
-  { id: 'HR-P2-1230', description: 'Internal Issue', date: '19/08/2024', priority: 'Medium', assigned: 'Lunga Ntshingila', status: 'Pending' },
+  { id: 'HR-P2-1230', description: 'Internal Issue: Maintenance Request', date: '19/08/2024', priority: 'High', assigned: 'Mike Mdluli', status: 'Pending' },
   { id: 'FI-P1-1231', description: 'Network Issue', date: '15/08/2024', priority: 'High', assigned: 'Abel Makamu', status: 'Ongoing' },
   { id: 'IT-P3-1232', description: 'Printer not working', date: '22/07/2024', priority: 'Low', assigned: 'Buhlaluse Ngcobo', status: 'Resolved' },
   { id: 'IT-P3-1233', description: 'Unable to login to portal', date: '22/07/2024', priority: 'Low', assigned: 'Pinky Ndlovu', status: 'Resolved' },
 ]
 
-export default function MainContent() {
+function MainContent() {
   const [logs, setLogs] = useState(initialLogs)
   const [searchTerm, setSearchTerm] = useState('')
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false)
   const [isSortModalOpen, setIsSortModalOpen] = useState(false)
+  const [selectedLog, setSelectedLog] = useState(null)
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value)
@@ -48,12 +50,23 @@ export default function MainContent() {
     setIsSortModalOpen(false)
   }
 
+  const handleViewLog = (log) => {
+    setSelectedLog(log)
+  }
+
+  const handleBackToList = () => {
+    setSelectedLog(null)
+  }
+
+  if (selectedLog) {
+    return <DetailView log={selectedLog} onBack={handleBackToList} />
+  }
+
   return (
     <main className="main-content">
-   
-      <div className="logs-header">
     
-        <h2 className="logs-title"> <Clock /> All Logs</h2>
+      <div className="logs-header">
+        <h2 className="logs-title"><Clock size={40}/>All Logs</h2>
         <button className="log-issue-button">LOG ISSUE</button>
       </div>
       <div className="search-bar">
@@ -100,7 +113,7 @@ export default function MainContent() {
                 <span className={`status ${log.status.toLowerCase()}`}>{log.status}</span>
               </td>
               <td>
-                <button className="view-button">View</button>
+                <button className="view-button" onClick={() => handleViewLog(log)}>View</button>
               </td>
             </tr>
           ))}
@@ -120,12 +133,15 @@ export default function MainContent() {
       {isSortModalOpen && (
         <SortModal onClose={() => setIsSortModalOpen(false)} onSort={handleSort} />
       )}
-         <div className="back-button">
+  <div className="back-button">
         <button className="icon-button">
           <ArrowLeft />
           <span>BACK</span>
         </button>
       </div>
     </main>
+    
   )
 }
+
+export default MainContent
