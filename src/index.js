@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import AddTechnicianPage from './components/ADMIN/AddTechnicianPage';
+import AdminDashboard from '../src/components/ADMIN/AdminDashboard';
+import EditTechnician from './components/ADMIN/EditTechnician';
+import AdminHeader from './components/AdminHeader/AdminHeader';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AddTechnicianPage />
+    <AdminHeader />
   </React.StrictMode>
 );
 
