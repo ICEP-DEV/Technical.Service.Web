@@ -1,28 +1,30 @@
-import Dashboard from './WelcomeStaff';
-import LogIssue from './logissueform';
-import Notification from './IssueTracker';
+import Dashboard from './AdminWelcome';
+//import LogIssue from './logissueform';
+//import Notification from './IssueTracker';
 import SideBar from './Navigation/Sidebar';
 import {BrowserRouter, Routes, Route } from 'react-router-dom';
-import './StaffStyle/staffdashboard.css';
-import StaffHeader from './Navigation/StaffHeader';
-import IssueDisplay from './IssueDisplay';
+import './AdminStyle/admindashboard.css';
+import AdminHeader from './Navigation/AdminHeader';
+import AddTech from './AddTechnicianPage';
+//import IssueDisplay from './IssueDisplay';
 
 
-const StaffDashboard = () => {
+const AdminDashboard = () => {
     return (  
+       <BrowserRouter >
         <div>
-         <StaffHeader /> 
+         <AdminHeader /> 
          <SideBar>
             <Routes>
-                <Route path="WelcomeStaff" element={<Dashboard />} /> 
-                <Route path="logissueform" element={<LogIssue />}/>
-                <Route path="issueDisplay" element={<IssueDisplay/>}></Route>
-                <Route path="issueTracker" element={<Notification />}/>
-                <Route path="IssueDisplay/test" element={<div>Test Route</div>} />
+                {/*<Route path="WelcomeStaff" element={<Dashboard />} /> 
+                <Route path="logissueform" element={<LogIssue />}/>*/}
+                <Route path="AddTechnician" element={<AddTech/>}></Route>
+                <Route path="AdminWelcome" element={<Dashboard />}/>
             </Routes>
         </SideBar>
         </div> 
+        </BrowserRouter> 
     );
 };
 
-export default StaffDashboard;
+export default AdminDashboard;

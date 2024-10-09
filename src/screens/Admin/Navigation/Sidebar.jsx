@@ -1,34 +1,34 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
-import AllIssueIcon from '../Navigation/IconsForStaff/allIssuesIcon.png';
-import LogIssueIcon from '../Navigation/IconsForStaff/logIssueIcon.png';
-import NotificationIcon from '../Navigation/IconsForStaff/notifications.png';
-import Dashboard from '../Navigation/IconsForStaff/dashboard.png';
+import Dashboard from './Icons/dashboard.png';
+import ViewAllLogs from './Icons/allIssuesIcon.png'
+import AsignTechnician from './Icons/notifications.png'
+import AddTechnician from './Icons/addtechnician.png';
 
 const Sidebar = ({ children }) => {
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
     const menuItem = [
         {
-            path: "/WelcomeStaff",
+            path: "/AdminWelcome",
             name: "DASHBOARD",
-            icon: <Dashboard />,
+            icon: <img src={Dashboard} alt="Dashboard Icon" />,
         },
         {
-            path: "/logissueform",
-            name: "LOG ISSUE",
-            icon: <LogIssueIcon />,
+            path: "/AddTechnician",
+            name: "ADD TECHNICIAN",
+            icon: <img src={AddTechnician} alt="Add Technician Icon" />,
         },
         {
             path: "/issueDisplay",
             name: "ALL ISSUE",
-            icon: <AllIssueIcon />,
+            icon: <img src={ViewAllLogs} alt="Dashboard Icon" />,
         },
         {
             path: "/issueTracker",
             name: "NOTIFICATIONS",
-            icon: <NotificationIcon />,
+            icon: <img src={AsignTechnician} alt="Dashboard Icon" />,
         },
     ];
 
@@ -36,7 +36,7 @@ const Sidebar = ({ children }) => {
         <div className="container">
             <div style={{ width: isOpen ? '200px' : '50px' }} className="sidebar">
                 <div className="top_section">
-                    <h1 style={{ display: isOpen ? 'block' : 'none' }} className="logo">Staff</h1>
+                    <h1 style={{ display: isOpen ? 'block' : 'none' }} className="logo">Admin</h1>
                     <div style={{ marginLeft: isOpen ? '50px' : '0px' }} className="bars">
                         <FaBars onClick={toggle} />
                     </div>

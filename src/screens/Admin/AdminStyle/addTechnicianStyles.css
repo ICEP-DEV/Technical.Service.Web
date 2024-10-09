@@ -1,10 +1,10 @@
-.header {
+.headerx {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
 }
 
-.container {
+.con {
     background-color: #f5f5f5;
     padding: 40px;
     border-radius: 8px;
@@ -47,20 +47,20 @@
     border: none;
 }
 
-.availability-section {
+.availability-sectionx {
     display: flex;
     gap: 10px;
 }
 
 /* Icon styling */
-.icon {
+.iconx {
     width: 70px;
     height: 70px;
     margin-right: 5px;
 }
 
 /* Header title styling */
-.header-title {
+.headerx-title {
     display: flex;
     align-items: center;
     font-family: 'Istok Web', sans-serif;

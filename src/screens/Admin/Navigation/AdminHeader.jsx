@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import '../StaffStyle/StaffHeaderStyle.css';
+import '../AdminStyle/AdminHeaderStyle.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import SettingsModal from '../SettingsModal'; // Import the modal
-import logo from '../Navigation/IconsForStaff/tut.png';
-
+import logo from '../Images/tut.png';
+import ProfileIcon from '../Images/profile_icon.png';
 const StaffHeader = ({ onLogout }) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isSettingsOpen, setIsSettingsOpen] = useState(false); // State to handle settings modal
@@ -42,14 +42,14 @@ const StaffHeader = ({ onLogout }) => {
                     onClick={toggleDropdown}
                     className="profile-button"
                 >
-                    <FontAwesomeIcon icon={faUser} />
-                    {user ? `${user.name} ${user.surname}` : 'Staff Name'}
+                    <img src={ProfileIcon} alt="Profile Icon" />
+                    {user ? `${user.name} ${user.surname}` : 'Admin Name'}
                 </button>
                 {isDropdownOpen && (
                     <div className={`dropdown-menu ${isDropdownOpen ? 'open' : ''}`}>
                         <p>{user ? `${user.name} ${user.surname}` : 'Name Surname'}</p>
-                        <p className="sub-text">{user ? user.email : 'Joestaff.com'}</p>
-                        <p className="sub-text">{user ? user.department : 'HR'}</p>
+                        <p className="sub-text">{user ? user.email : 'EzraAdmin.com'}</p>
+                        <p className="sub-text">{user ? user.department : 'ICT'}</p>
                         <button onClick={() => { closeDropdown(); /* Navigate to profile */ }}>Profile</button>
                         <button onClick={() => { closeDropdown(); setIsSettingsOpen(true); }}>Settings</button> {/* Open Settings */}
                         <button className="signout-button" onClick={() => { closeDropdown(); onLogout(); }}>

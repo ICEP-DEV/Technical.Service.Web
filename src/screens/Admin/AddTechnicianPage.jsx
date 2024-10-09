@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './styles/addTechnicianStyles.css';
+import './AdminStyle/addTechnicianStyles.css';
 
-import addCircle from './images/addCircle.png';
+import addCircle from './Images/addCircle.png';
 import { useNavigate } from 'react-router-dom';
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -39,10 +39,10 @@ const AddTechnician = () => {
     };
 
     return (
-        <div className="container">
+        <div className="con">
 
-            <div className="header">
-                <img src={addCircle} alt="Add Technician" className="icon" />
+            <div className="headerx">
+                <img src={addCircle} alt="Add Technician" className="iconx" />
                 <h1 className="header-title">Add Technician</h1>
             </div>
 
@@ -79,7 +79,7 @@ const AddTechnician = () => {
                 <div className="row mt-3">
                     <div className="col-md-6">
                         <label htmlFor="availability" className="form-label">Set Availability</label>
-                        <div className="availability-section">
+                        <div className="availability-sectionx">
                             <span>From:</span>
                             <input type="time" className="form-control" id="fromTime" />
                             <span>To:</span>
