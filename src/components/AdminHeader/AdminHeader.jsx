@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
-import '../style/AdminHeader.css';
+import '../ADMIN/styles/adminHeader.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faSignOutAlt, faEdit } from '@fortawesome/free-solid-svg-icons'; // Import the edit icon
-import logo from './images/tut_logo.png';
+import { faSignOutAlt, faEdit } from '@fortawesome/free-solid-svg-icons'; // Removed faUser since we'll use the profile image
+import EditProfileModal from './EditProfileModal';
+import logo from '../ADMIN/images/tut_logo.png';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 const AdminHeader = ({ onLogout }) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [user, setUser] = useState(null);
     const dropdownRef = useRef(null);
 
@@ -29,6 +32,12 @@ const AdminHeader = ({ onLogout }) => {
     const toggleDropdown = () => setIsDropdownOpen(!isDropdownOpen);
     const closeDropdown = () => setIsDropdownOpen(false);
 
+    // Function to update user info after editing
+    const handleUpdateUser = (updatedUser) => {
+        setUser(updatedUser);
+        localStorage.setItem('user_info', JSON.stringify(updatedUser));
+    };
+
     return (
         <header className="dashboard-header">
             <div className="header-left">
@@ -40,24 +49,27 @@ const AdminHeader = ({ onLogout }) => {
                     onClick={toggleDropdown}
                     className="profile-button"
                 >
-                    <FontAwesomeIcon icon={faUser} />
+                    {user?.profileImage ? (
+                        <img src={user.profileImage} alt="Profile" className="profile-icon" height={30}/>
+                    ) : (
+                        <FontAwesomeIcon icon={faUser} />
+                    )}
                     {user ? `${user.name} ${user.surname}` : 'Admin Name'}
                 </button>
                 {isDropdownOpen && (
                     <div className="viewing-box">
                         <button 
-                                className="edit-button" 
-                                onClick={() => { closeDropdown(); /* Add edit functionality here */ }}
-                                title="Edit Profile"
-                            >
-                                <FontAwesomeIcon icon={faEdit} />
-                            </button>
+                            className="edit-button" 
+                            onClick={() => { closeDropdown(); setIsModalOpen(true); }}
+                            title="Edit Profile"
+                        >
+                            <FontAwesomeIcon icon={faEdit} height={30}/>
+                        </button>
                         <div className="header">
                             <h3 className="profile-name">{user ? `${user.name} ${user.surname}` : 'Jane Doe'}</h3>
-                            
                         </div>
                         <p className="sub-text">{user ? user.email : 'jane@Admin.com'}</p>
-                        <p className="sub-text"><strong>{user ? user.department : 'Administrator'}</strong></p>
+                        <p className="sub-text"><strong>{user ? user.role : 'Administrator'}</strong></p>
                         <button className="signout-button" onClick={() => { closeDropdown(); onLogout(); }}>
                             <span className="signout-icon">
                                 <FontAwesomeIcon icon={faSignOutAlt} />
@@ -67,6 +79,13 @@ const AdminHeader = ({ onLogout }) => {
                     </div>
                 )}
             </div>
+            {/* Render the modal */}
+            <EditProfileModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                user={user}
+                onSave={handleUpdateUser} 
+            />
         </header>
     );
 };

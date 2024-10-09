@@ -1,13 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import AdminDashboard from './screens/Admin/AdminDashboard';
-const root = ReactDOM.createRoot(document.getElementById('root'));
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import AdminDashboard from "../src/components/ADMIN/AdminDashboard";
+import EditTechnician from "./components/ADMIN/EditTechnician";
+import AdminHeader from "./components/AdminHeader/AdminHeader";
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <AdminDashboard />
+    <App />
   </React.StrictMode>
 );
 
